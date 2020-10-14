@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Templates\ForgotPasswordEmail.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Templates\ForgotPasswordEmail.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Convey" Version="0.4.354" />
     <PackageReference Include="Convey.Logging" Version="0.4.354" />
     <PackageReference Include="Convey.WebApi" Version="0.4.354" />

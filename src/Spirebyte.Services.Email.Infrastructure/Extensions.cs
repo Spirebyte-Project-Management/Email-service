@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Convey;
 using Convey.Auth;
-using Convey.CQRS.Commands;
 using Convey.CQRS.Events;
-using Convey.CQRS.Queries;
 using Convey.Discovery.Consul;
 using Convey.Docs.Swagger;
 using Convey.HTTP;
@@ -32,10 +30,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Spirebyte.Services.Email.Application;
+using Spirebyte.Services.Email.Application.Events.External;
 using Spirebyte.Services.Email.Application.Services.Interfaces;
+using Spirebyte.Services.Email.Infrastructure.Configuration;
 using Spirebyte.Services.Email.Infrastructure.Contexts;
 using Spirebyte.Services.Email.Infrastructure.Decorators;
 using Spirebyte.Services.Email.Infrastructure.Exceptions;
+using Spirebyte.Services.Email.Infrastructure.RazorRenderer;
+using Spirebyte.Services.Email.Infrastructure.RazorRenderer.Interfaces;
 using Spirebyte.Services.Email.Infrastructure.Services;
 
 namespace Spirebyte.Services.Email.Infrastructure
@@ -48,11 +50,11 @@ namespace Spirebyte.Services.Email.Infrastructure
             builder.Services.AddTransient<IAppContextFactory, AppContextFactory>();
             builder.Services.AddTransient(ctx => ctx.GetRequiredService<IAppContextFactory>().Create());
             builder.Services.TryDecorate(typeof(IEventHandler<>), typeof(OutboxEventHandlerDecorator<>));
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             return builder
                 .AddErrorHandler<ExceptionToResponseMapper>()
-                .AddQueryHandlers()
-                .AddInMemoryQueryDispatcher()
                 .AddJwt()
                 .AddHttpClient()
                 .AddConsul()
@@ -64,7 +66,8 @@ namespace Spirebyte.Services.Email.Infrastructure
                 .AddRedis()
                 .AddJaeger()
                 .AddWebApiSwaggerDocs()
-                .AddSecurity();
+                .AddSecurity()
+                .AddEmailSender();
         }
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
         {
@@ -73,16 +76,10 @@ namespace Spirebyte.Services.Email.Infrastructure
                 .UseJaeger()
                 .UseConvey()
                 .UsePublicContracts<ContractAttribute>()
-                .UseRabbitMq();
+                .UseRabbitMq()
+                .SubscribeEvent<PasswordForgotten>();
 
             return app;
-        }
-
-        public static async Task<Guid> AuthenticateUsingJwtAsync(this HttpContext context)
-        {
-            var authentication = await context.AuthenticateAsync(JwtBearerDefaults.AuthenticationScheme);
-
-            return authentication.Succeeded ? Guid.Parse(authentication.Principal.Identity.Name) : Guid.Empty;
         }
 
         internal static CorrelationContext GetCorrelationContext(this IHttpContextAccessor accessor)
@@ -119,6 +116,19 @@ namespace Spirebyte.Services.Email.Infrastructure
             }
 
             return string.Empty;
+        }
+
+        internal static IConveyBuilder AddEmailSender(this IConveyBuilder builder)
+        {
+            var emailOptions = builder.GetOptions<EmailOptions>("EmailOptions");
+            var urlOptions = builder.GetOptions<UrlOptions>("UrlOptions");
+            builder.Services.AddSingleton(emailOptions);
+            builder.Services.AddSingleton<IUrlOptions>(urlOptions);
+            builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
+
+            return builder;
+
         }
     }
 }

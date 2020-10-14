@@ -26,6 +26,7 @@
     <PackageReference Include="Convey.WebApi.CQRS" Version="0.4.354" />
     <PackageReference Include="Convey.WebApi.Swagger" Version="0.4.354" />
     <PackageReference Include="MailKit" Version="2.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
   </ItemGroup>
 
   <ItemGroup>

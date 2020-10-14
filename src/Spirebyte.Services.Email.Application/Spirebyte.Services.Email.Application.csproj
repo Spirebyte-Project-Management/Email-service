@@ -13,8 +13,6 @@
 
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="Events\External\Handlers\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
 
   <ItemGroup>
