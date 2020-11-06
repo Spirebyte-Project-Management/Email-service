@@ -77,7 +77,8 @@ namespace Spirebyte.Services.Email.Infrastructure
                 .UseConvey()
                 .UsePublicContracts<ContractAttribute>()
                 .UseRabbitMq()
-                .SubscribeEvent<PasswordForgotten>();
+                .SubscribeEvent<PasswordForgotten>()
+                .SubscribeEvent<UserInvitedToProject>();
 
             return app;
         }

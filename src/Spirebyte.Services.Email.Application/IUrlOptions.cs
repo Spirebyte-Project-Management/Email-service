@@ -8,5 +8,7 @@ namespace Spirebyte.Services.Email.Application
     {
         string ClientUrl { get; set; }
         string ResetPasswordPath { get; set; }
+
+        string UserInvitedToProjectPath { get; set; }
     }
 }

@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Spirebyte.Services.Email.Core\Spirebyte.Services.Email.Core.csproj" />
   </ItemGroup>
 
