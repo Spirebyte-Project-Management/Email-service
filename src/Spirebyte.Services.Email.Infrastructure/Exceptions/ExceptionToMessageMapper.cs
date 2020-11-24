@@ -1,6 +1,5 @@
 ﻿using System;
 using Convey.MessageBrokers.RabbitMQ;
-using Spirebyte.Services.Email.Application.Exceptions;
 
 namespace Spirebyte.Services.Email.Infrastructure.Exceptions
 {

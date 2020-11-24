@@ -46,7 +46,6 @@ namespace Spirebyte.Services.Email.Infrastructure
     {
         public static IConveyBuilder AddInfrastructure(this IConveyBuilder builder)
         {
-            builder.Services.AddTransient<IMessageBroker, MessageBroker>();
             builder.Services.AddTransient<IAppContextFactory, AppContextFactory>();
             builder.Services.AddTransient(ctx => ctx.GetRequiredService<IAppContextFactory>().Create());
             builder.Services.TryDecorate(typeof(IEventHandler<>), typeof(OutboxEventHandlerDecorator<>));
@@ -75,7 +74,6 @@ namespace Spirebyte.Services.Email.Infrastructure
                 .UseSwaggerDocs()
                 .UseJaeger()
                 .UseConvey()
-                .UsePublicContracts<ContractAttribute>()
                 .UseRabbitMq()
                 .SubscribeEvent<PasswordForgotten>()
                 .SubscribeEvent<UserInvitedToProject>();
