@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Convey;
 using Convey.Logging;
 using Convey.Secrets.Vault;
@@ -12,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Spirebyte.Services.Email.Application;
 using Spirebyte.Services.Email.Infrastructure;
+using System.Threading.Tasks;
 
 namespace Spirebyte.Services.Email.API
 {

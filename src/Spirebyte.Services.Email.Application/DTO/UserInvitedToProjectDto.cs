@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Spirebyte.Services.Email.Application.DTO
+﻿namespace Spirebyte.Services.Email.Application.DTO
 {
     public class UserInvitedToProjectDto
     {

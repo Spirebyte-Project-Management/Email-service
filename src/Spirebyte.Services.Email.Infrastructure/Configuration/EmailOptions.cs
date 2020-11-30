@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Spirebyte.Services.Email.Infrastructure.Configuration
+﻿namespace Spirebyte.Services.Email.Infrastructure.Configuration
 {
     public class EmailOptions
     {

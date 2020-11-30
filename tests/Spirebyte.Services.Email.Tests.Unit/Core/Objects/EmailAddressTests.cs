@@ -1,8 +1,7 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Spirebyte.Services.Email.Core.Exceptions;
 using Spirebyte.Services.Email.Core.Objects;
-using Spirebyte.Services.Email.Core.Objects.Base;
+using System;
 using Xunit;
 
 namespace Spirebyte.Services.Email.Tests.Unit.Core.Objects

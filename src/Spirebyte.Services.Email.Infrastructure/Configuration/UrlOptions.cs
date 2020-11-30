@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Spirebyte.Services.Email.Application;
+﻿using Spirebyte.Services.Email.Application;
 
 namespace Spirebyte.Services.Email.Infrastructure.Configuration
 {

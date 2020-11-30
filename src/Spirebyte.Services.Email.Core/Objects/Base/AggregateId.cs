@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Spirebyte.Services.Email.Core.Exceptions;
+﻿using Spirebyte.Services.Email.Core.Exceptions;
+using System;
 
 namespace Spirebyte.Services.Email.Core.Objects.Base
 {

@@ -1,5 +1,5 @@
-﻿using System;
-using Convey.MessageBrokers.RabbitMQ;
+﻿using Convey.MessageBrokers.RabbitMQ;
+using System;
 
 namespace Spirebyte.Services.Email.Infrastructure.Exceptions
 {

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Net;
-using Convey;
+﻿using Convey;
 using Convey.WebApi.Exceptions;
 using Spirebyte.Services.Email.Core.Exceptions.Base;
+using System;
+using System.Collections.Concurrent;
+using System.Net;
 
 namespace Spirebyte.Services.Email.Infrastructure.Exceptions
 {

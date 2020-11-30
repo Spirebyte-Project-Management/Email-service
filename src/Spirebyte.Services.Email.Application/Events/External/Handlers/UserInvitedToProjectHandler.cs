@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Convey.CQRS.Events;
+﻿using Convey.CQRS.Events;
 using Microsoft.Extensions.Logging;
 using Spirebyte.Services.Email.Application.DTO;
 using Spirebyte.Services.Email.Application.Services.Interfaces;
 using Spirebyte.Services.Email.Core.Objects;
+using System.Threading.Tasks;
 
 namespace Spirebyte.Services.Email.Application.Events.External.Handlers
 {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Convey.CQRS.Events;
+﻿using Convey.CQRS.Events;
 using Convey.MessageBrokers;
-using Spirebyte.Services.Email.Core.Objects.Base;
+using System;
 
 namespace Spirebyte.Services.Email.Application.Events.External
 {

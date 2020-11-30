@@ -1,6 +1,6 @@
+using Spirebyte.Services.Email.Application;
 using System;
 using System.Collections.Generic;
-using Spirebyte.Services.Email.Application;
 
 namespace Spirebyte.Services.Email.Infrastructure.Contexts
 {

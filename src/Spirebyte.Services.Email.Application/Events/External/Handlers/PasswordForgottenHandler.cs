@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Convey.CQRS.Events;
+﻿using Convey.CQRS.Events;
 using Microsoft.Extensions.Logging;
 using Spirebyte.Services.Email.Application.Services.Interfaces;
 using Spirebyte.Services.Email.Core.Objects;
+using System.Threading.Tasks;
 
 namespace Spirebyte.Services.Email.Application.Events.External.Handlers
 {
@@ -28,7 +25,7 @@ namespace Spirebyte.Services.Email.Application.Events.External.Handlers
         public async Task HandleAsync(PasswordForgotten @event)
         {
             var url = _urlOptions.ClientUrl + string.Format(_urlOptions.ResetPasswordPath, @event.UserId, @event.Token);
-            var emailAddress = new EmailAddress( @event.Fullname, @event.Email);
+            var emailAddress = new EmailAddress(@event.Fullname, @event.Email);
 
             await _emailService.SendViewBasedEmail<string>(emailAddress, Title, PasswordForgottenTemplate, url);
             _logger.LogInformation($"Sent pasword reset email for user with id: {@event.UserId}");

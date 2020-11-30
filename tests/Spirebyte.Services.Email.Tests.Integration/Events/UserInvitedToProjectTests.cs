@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using Convey.CQRS.Events;
+﻿using Convey.CQRS.Events;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Spirebyte.Services.Email.API;
 using Spirebyte.Services.Email.Application.Events.External;
 using Spirebyte.Services.Email.Tests.Shared.Factories;
 using Spirebyte.Services.Email.Tests.Shared.Fixtures;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Spirebyte.Services.Email.Tests.Integration.Events

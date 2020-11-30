@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Convey;
+﻿using Convey;
 using Convey.Auth;
 using Convey.CQRS.Events;
 using Convey.Discovery.Consul;
@@ -21,10 +16,7 @@ using Convey.Security;
 using Convey.Tracing.Jaeger;
 using Convey.Tracing.Jaeger.RabbitMQ;
 using Convey.WebApi;
-using Convey.WebApi.CQRS;
 using Convey.WebApi.Swagger;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +31,9 @@ using Spirebyte.Services.Email.Infrastructure.Exceptions;
 using Spirebyte.Services.Email.Infrastructure.RazorRenderer;
 using Spirebyte.Services.Email.Infrastructure.RazorRenderer.Interfaces;
 using Spirebyte.Services.Email.Infrastructure.Services;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Spirebyte.Services.Email.Infrastructure
 {

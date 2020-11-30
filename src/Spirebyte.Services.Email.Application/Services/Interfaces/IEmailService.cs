@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Spirebyte.Services.Email.Core.Objects;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Spirebyte.Services.Email.Core.Objects;
 
 namespace Spirebyte.Services.Email.Application.Services.Interfaces
 {

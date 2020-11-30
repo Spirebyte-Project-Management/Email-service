@@ -1,5 +1,5 @@
-using System;
 using Spirebyte.Services.Email.Application;
+using System;
 
 namespace Spirebyte.Services.Email.Infrastructure.Contexts
 {

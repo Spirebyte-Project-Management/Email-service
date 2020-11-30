@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
@@ -12,6 +6,11 @@ using Spirebyte.Services.Email.Application.Services.Interfaces;
 using Spirebyte.Services.Email.Core.Objects;
 using Spirebyte.Services.Email.Infrastructure.Configuration;
 using Spirebyte.Services.Email.Infrastructure.RazorRenderer.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace Spirebyte.Services.Email.Infrastructure.Services
 {
@@ -40,7 +39,7 @@ namespace Spirebyte.Services.Email.Infrastructure.Services
             {
                 Content = body,
                 Subject = subject,
-                FromAddresses = new List<EmailAddress> { new EmailAddress (_emailOptions.SenderName, _emailOptions.SenderEmail) },
+                FromAddresses = new List<EmailAddress> { new EmailAddress(_emailOptions.SenderName, _emailOptions.SenderEmail) },
                 ToAddresses = toAdresses
             };
 
@@ -70,7 +69,7 @@ namespace Spirebyte.Services.Email.Infrastructure.Services
                         emailClient.ServerCertificateValidationCallback = (object sender,
                             X509Certificate certificate,
                             X509Chain chain,
-                            SslPolicyErrors sslPolicyErrors) => true;
+                            SslPolicyErrors sslPolicyErrors) => sslPolicyErrors == SslPolicyErrors.None;
                     }
                     await emailClient.ConnectAsync(_emailOptions.SmtpServer, _emailOptions.SmtpPort, _emailOptions.IsSsl);
                     await emailClient.AuthenticateAsync(_emailOptions.SmtpUsername, _emailOptions.SmtpPassword);
