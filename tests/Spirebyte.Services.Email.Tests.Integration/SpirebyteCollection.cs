@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Spirebyte.Services.Email.Tests.Integration
 {
-    [CollectionDefinition("Spirebyte collection")]
+    [CollectionDefinition("Spirebyte collection", DisableParallelization = true)]
     public class SpirebyteCollection : ICollectionFixture<SpirebyteApplicationFactory<Program>>
     {
     }
