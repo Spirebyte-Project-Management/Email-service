@@ -1,5 +1,4 @@
-﻿using System;
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
 using Spirebyte.Services.Email.Application.Services.Interfaces;
@@ -48,6 +47,9 @@ namespace Spirebyte.Services.Email.Infrastructure.Services
 
         public async Task Send(EmailMessage emailMessage)
         {
+            if(_emailOptions.IsTesting)
+                return;
+
             var message = new MimeMessage();
             message.Bcc.AddRange(emailMessage.ToAddresses.Select(x => new MailboxAddress(x.Name, x.Address)));
             message.From.AddRange(emailMessage.FromAddresses.Select(x => new MailboxAddress(x.Name, x.Address)));

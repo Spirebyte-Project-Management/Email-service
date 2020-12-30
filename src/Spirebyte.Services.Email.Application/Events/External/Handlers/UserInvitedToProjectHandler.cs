@@ -25,8 +25,8 @@ namespace Spirebyte.Services.Email.Application.Events.External.Handlers
 
         public async Task HandleAsync(UserInvitedToProject @event)
         {
-            var url = _urlOptions.ClientUrl + string.Format(_urlOptions.UserInvitedToProjectPath, @event.ProjectKey, @event.UserId);
-            var emailAddress = new EmailAddress(@event.Username, @event.EmailAdress);
+            var url = _urlOptions.ClientUrl + string.Format(_urlOptions.UserInvitedToProjectPath, @event.ProjectId, @event.UserId);
+            var emailAddress = new EmailAddress(@event.Username, @event.EmailAddress);
 
             await _emailService.SendViewBasedEmail<UserInvitedToProjectDto>(emailAddress, Title, PasswordForgottenTemplate, new UserInvitedToProjectDto(@event.ProjectTitle, @event.Username, url));
             _logger.LogInformation($"Sent project invitation to user with id: {@event.UserId}");

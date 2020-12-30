@@ -2,6 +2,7 @@
 {
     public class EmailOptions
     {
+        public bool IsTesting { get; set; } = false;
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set; }
         public string SmtpUsername { get; set; }

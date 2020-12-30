@@ -33,15 +33,14 @@ namespace Spirebyte.Services.Email.Tests.Integration.Events
         [Fact]
         public async Task user_invited_to_project_event_should_send_email_with_link()
         {
-            var projectId = Guid.NewGuid();
+            var projectId = "projectKey";
             var userId = Guid.NewGuid();
             var username = "username";
             var email = "email@test.com";
             var projectname = "projectTitle";
-            var projectKey = "key-1";
 
 
-            var externalEvent = new UserInvitedToProject(userId, userId, projectname, projectKey, username, email);
+            var externalEvent = new UserInvitedToProject(projectId, userId, projectname, username, email);
 
             // Check if exception is thrown
 
