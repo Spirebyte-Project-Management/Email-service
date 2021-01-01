@@ -47,7 +47,7 @@ namespace Spirebyte.Services.Email.Infrastructure.Services
 
         public async Task Send(EmailMessage emailMessage)
         {
-            if(_emailOptions.IsTesting)
+            if (_emailOptions.IsTesting)
                 return;
 
             var message = new MimeMessage();
